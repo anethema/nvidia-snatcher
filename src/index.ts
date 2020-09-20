@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
 import adblockerPlugin from 'puppeteer-extra-plugin-adblocker';
 import {Config} from './config';
-import {Store, Stores} from './store/model';
+import {Link, Store, Stores} from './store/model';
 import {Logger} from './logger';
 import {sendNotification} from './notification';
 import {lookup} from './store';
@@ -49,13 +49,6 @@ async function main() {
 	await q.drain();
 
 	await browser.close();
-}
-
-/**
- * Send test email.
- */
-if (Config.notifications.test) {
-	sendNotification('http://test.com/', {brand: 'THE BEST BRAND', model: 'VENTUS', oosLabels: [], url: '', cartUrl: ''});
 }
 
 /**
